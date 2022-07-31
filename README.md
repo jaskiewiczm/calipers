@@ -1,4 +1,4 @@
 
 # Executing
 
-* `node server.js`
+* `make run`
