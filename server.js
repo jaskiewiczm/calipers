@@ -6,17 +6,33 @@ const port = 8000;
 
 
 const requestListener = function (req, res) {
-    fs.readFile(__dirname + "/public/index.html")
-        .then(contents => {
-            res.setHeader("Content-Type", "text/html");
-            res.writeHead(200);
-            res.end(contents);
-        })
-        .catch(err => {
-            res.writeHead(500);
-            res.end(err);
-            return;
-        });
+    var filePath = null;
+    if (req && req.url) {
+        console.log(req.url)
+
+        var path = null;
+        var mimeType = null;
+        if (req.url == '/') {
+            path = `${__dirname}/public/index.html`;
+            mimeType = "text/html";
+        } else if (req.url.endsWith('js')) {
+            path = `${__dirname}/public/javascript${req.url}`;
+            mimeType = "text/javascript";
+        }
+
+        fs.readFile(path)
+            .then(contents => {
+                res.setHeader("Content-Type", mimeType);
+                res.writeHead(200);
+                res.end(contents);
+            })
+            .catch(err => {
+                res.writeHead(500);
+                res.end(err);
+                return;
+            });
+    }
+
 };
 
 const server = http.createServer(requestListener);
