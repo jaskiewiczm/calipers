@@ -1,9 +1,16 @@
-let los = (Math.random() * 6000)/50;
+
 var skala = 4;
 const skalaFloor = 4;
 const skalaCeiling = 8;
 var canvas = document.getElementById("suwmiarka_uniw");
 var rysuj = canvas.getContext("2d");
+var los = 0;
+
+const refreshLos = () => {
+    los = (Math.random() * 6000)/50;
+}
+
+
 
 const suwak2 = (rysuj,x,y,kolor,skala,typ,wymiar) => {
     rysuj.beginPath();
@@ -140,6 +147,7 @@ const suwak = (rysuj,x,y,kolor,skala,typ,wymiar) => {
 };
 
 const draw = () => {
+    rysuj.clearRect(0, 0, canvas.width, canvas.height);
     prowadnica(rysuj,10,4,"silver", skala,1);
     suwak(rysuj,10,4,"silver", skala,1,los);
 }
@@ -148,8 +156,13 @@ window.onload = function(){
     draw();
 };
 
+const refreshButton = document.getElementById("refreshButton");
+refreshButton.onclick = function() {
+    refreshLos();
+    draw();
+}
+
 canvas.addEventListener('wheel', (e) => {
-    rysuj.clearRect(0, 0, canvas.width, canvas.height);
     skala += 0.1 *e.deltaY;
     if (skala < skalaFloor) {
         skala = skalaFloor;
