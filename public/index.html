@@ -1,66 +1,55 @@
 <!DOCTYPE HTLM>
 <html lang="pl">
+	<head>
+		<meta charset="utf-8" />
+		<title> symulator suwmiarki </title>
+		<meta name="description" content=" przykład pomiarów"/><meta name="keywords" content="pomiary, suwmiarka" />
+		<meta http-equiv="x - UA-Compatybile" content="IE=edge,chrome=1"/>
 
+		<style>
+		#container
+			{
+			width: 640px:
+			margin-left: auto;
+			margin-right:auto;
+			}
+		#logo
+			{
+			background-color: black;
+			color: white;
+			text-align: center;
+			pading: 15px;
+			}
+		#suwmiarka
+			{
+			height:360px;
+			}
+		#kontrola
+			{
 
-<head>
-	<meta charset="utf-8" />
-	<title> symulator suwmiarki </title>
-	<meta name="description" content=" przykład pomiarów"/><meta name="keywords" content="pomiary, suwmiarka" />
-	<meta http-equiv="x - UA-Compatybile" content="IE=edge,chrome=1"/>
-
-	<style>
-	#container
-		{
-		width: 640px:
-		margin-left: auto;
-		margin-right:auto;
-		}
-	#logo
-		{
-		background-color: black;
-		color: white;
-		text-align: center;
-		pading: 15px;
-		}
-	#suwmiarka
-		{
-		height:360px;
-		}
-	#kontrola
-		{
-
-		}
+			}
 
 
 
-	</style>
+		</style>
 
-	<script type="module" src="calipers.js"></script>
-</head>
+		<script type="module" src="calipers.js"></script>
+	</head>
+	<body style="overflow:hidden">
+		<div  id = "container">
+			<div id="logo">
+			 <h1> SUWMIARKA </h1>
+			</div>
 
+			<div id="suwmiarka">
+				<canvas id="suwmiarka_uniw" width="1500" height="600" style="border:1px solid black;" tabindex='1'>
+				</canvas>
+			</div>
 
-<body>
-
-
-	<div  id = "container">
-
-		<div id="logo">
-		 <h1> SUWMIARKA </h1>
+			<div id="kontrola">
+			 <h3> Podaj prawidłowy wynik </h3>
+			</div>
 		</div>
-
-		<div id="suwmiarka">
-			<canvas id="suwmiarka_uniw" width="1500" height="600" style="border:1px solid black;">
-			</canvas>
-		</div>
-
-		<div id="kontrola">
-		 <h3> Podaj prawidłowy wynik </h3>
-		</div>
-	</div>
-
-</body>
-
-
-
+	</body>
 
 </html>
