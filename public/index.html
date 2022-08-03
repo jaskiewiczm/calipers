@@ -1,8 +1,208 @@
-<!DOCTYPE html>
-    <head>
-        <script type='application/javascript' src='calipers.js'></script>
-    </head>
-    <body>
-        <button onClick="foo()">Button</button>
-    </body>
+<!DOCTYPE HTLM>
+<html lang="pl">
+
+
+<head>
+	<meta charset="utf-8" />
+	<title> symulator suwmiarki </title>
+	<meta name="description" content=" przykład pomiarów"/><meta name="keywords" content="pomiary, suwmiarka" />
+	<meta http-equiv="X-UA-Compatybile" content="IE=edge,chrome=1"/>
+
+	<style>
+	#container
+		{
+		width: 640px:
+		margin-left: auto;
+		margin-right:auto;
+		}
+	#logo
+		{
+		background-color: black;
+		color: white;
+		text-align: center;
+		pading: 15px;
+		}
+	#suwmiarka
+		{
+		height:360px;
+		}
+	#kontrola
+		{
+
+		}
+
+
+
+	</style>
+
+	<script>
+	let los = (Math.random()* 6000)/50;
+		function suwak2(rysuj,x,y,kolor,skala,typ,wymiar){
+			rysuj.beginPath();
+			rysuj.moveTo((x+wymiar)*skala,y*skala);
+			rysuj.lineTo((x+wymiar)*skala,(y+10.13)*skala);
+			rysuj.lineTo((x-0.69+wymiar)*skala,(y+10.5)*skala);
+			rysuj.lineTo((x-0.69+wymiar)*skala,(y+14.13)*skala);
+			rysuj.lineTo((x+2.15+wymiar)*skala,(y+15.65)*skala);
+			rysuj.lineTo((x+7.43+wymiar)*skala,(y+15.65)*skala);
+			rysuj.lineTo((x+7.43+wymiar)*skala,(y+20.2)*skala);
+			rysuj.lineTo((x-6.63+wymiar)*skala,(y+20.2)*skala);
+			rysuj.lineTo((x-6.63+wymiar)*skala,(y+13.1)*skala);
+			rysuj.arc((x+17.43+wymiar)*skala,(y+17.05)*skala, 24.38*skala, 3.3, 3.9, 0);
+			rysuj.closePath();
+			rysuj.moveTo((x+218.76)*skala,(y+26.38)*skala);
+			rysuj.lineTo((x+215.76+wymiar)*skala,(y+26.38)*skala);
+			rysuj.arc((x+217+wymiar)*skala,(y+26.17)*skala, 1.51*skala, 2, 1.5, 1);
+			rysuj.lineTo((x+218.76+wymiar)*skala,(y+27.68)*skala);
+			rysuj.lineTo((x+218.76+wymiar)*skala,(y+29.04)*skala);
+			rysuj.lineTo((x+218.76)*skala,(y+29.04)*skala);
+			rysuj.fillStyle=kolor;
+			rysuj.fill();
+			rysuj.strokeStyle="black"
+			rysuj.lineWidth=0.5;
+			rysuj.stroke();
+		}
+		function prowadnica(rysuj,x,y,kolor,skala,typ) { //typ: rodzaj podziałki(cal/mm)
+			rysuj.beginPath();
+			rysuj.moveTo(x*skala,y*skala);
+			rysuj.lineTo(x*skala,(y+16)*skala);
+			rysuj.lineTo((x-6.6)*skala,(y+16)*skala);
+			rysuj.lineTo((x-6.6)*skala,(y+40.7)*skala);
+			rysuj.lineTo((x+1.2)*skala,(y+71.4)*skala);
+			rysuj.lineTo((x+7.1)*skala,(y+74.7)*skala);
+			rysuj.lineTo((x+7.1)*skala,(y+46.8)*skala);
+			rysuj.lineTo((x+6.8)*skala,(y+46.3)*skala);
+			rysuj.lineTo((x+6.8)*skala,(y+35.2)*skala);
+			rysuj.lineTo((x+218.8)*skala,(y+35.2)*skala);
+			rysuj.lineTo((x+218.8)*skala,(y+20.2)*skala);
+			rysuj.lineTo((x+6.34)*skala,(y+20.2)*skala);
+			rysuj.lineTo((x+6.34)*skala,(y+13.1)*skala);
+			rysuj.arc((x-20.16)*skala, (y+17.84)*skala, 26.92*skala, 6, 5.58,1);
+			rysuj.closePath();
+			rysuj.fillStyle=kolor;
+			rysuj.fill();
+			rysuj.moveTo((x-6.6)*skala,(y+22.1)*skala);
+			rysuj.lineTo((x+218.8)*skala,(y+22.1)*skala);
+			rysuj.moveTo((x-6.6)*skala,(y+33.3)*skala);
+			rysuj.lineTo((x+218.8)*skala,(y+33.3)*skala);
+			rysuj.moveTo((x+2.06)*skala,(y+71.86)*skala);
+			rysuj.lineTo((x+2.06)*skala,(y+62.47)*skala);
+			rysuj.lineTo((x+6.8)*skala,(y+62.47)*skala);
+			rysuj.moveTo((x+2.93)*skala,(y+4)*skala);
+			rysuj.lineTo((x+2.93)*skala,(y+12.68)*skala);
+			rysuj.lineTo(x*skala,(y+12.68)*skala);
+
+			for (i=0; i<=19; i++) {
+				rysuj.moveTo((x+9.87+(i*10))*skala*typ,(y+29.05)*skala);
+				rysuj.lineTo((x+9.87+(i*10))*skala*typ,(y+32.39)*skala);
+				rysuj.font = "normal 15px Arial";
+				rysuj.strokeText(i,(x+8.87+(i*10))*skala*typ, (y+28)*skala);
+				for(j=1;j<=10;j++){
+				 if (j % 5 == 0 && j % 10 != 0) {
+				 	rysuj.moveTo((x+9.87+(i*10)+j)*skala*typ,(y+29.05)*skala);
+				 	rysuj.lineTo((x+9.87+(i*10)+j)*skala*typ,(y+32.39)*skala);
+				 } else {
+				 	rysuj.moveTo((x+9.87+(i*10)+j)*skala*typ,(y+30.72)*skala);
+				 	rysuj.lineTo((x+9.87+(i*10)+j)*skala*typ,(y+32.39)*skala);
+				 }
+
+				}
+			}
+			rysuj.strokeStyle="black"
+			rysuj.lineWidth=0.5;
+			rysuj.stroke();
+		}
+		function suwak(rysuj,x,y,kolor,skala,typ,wymiar){
+			suwak2(rysuj,x,y,kolor,skala,typ,wymiar);
+			rysuj.beginPath();
+			rysuj.moveTo((x+7.43+wymiar)*skala,(y+15.13)*skala);
+			rysuj.lineTo((x+7.43+wymiar)*skala,(y+22.97)*skala);
+			rysuj.lineTo((x+59.23+wymiar)*skala,(y+22.97)*skala);
+			rysuj.lineTo((x+59.23+wymiar)*skala,(y+15.13)*skala);
+			rysuj.lineTo((x+7.43+wymiar)*skala,(y+15.13)*skala);
+			rysuj.closePath();
+			rysuj.moveTo((x+7.43+wymiar)*skala,(y+18.67)*skala);
+			rysuj.lineTo((x+59.23+wymiar)*skala,(y+18.67)*skala);
+			rysuj.moveTo((x+7.43+wymiar)*skala,(y+32.46)*skala);
+			rysuj.lineTo((x+7.43+wymiar)*skala,(y+46.28)*skala);
+			rysuj.lineTo((x+7.12+wymiar)*skala,(y+46.82)*skala);
+			rysuj.lineTo((x+7.12+wymiar)*skala,(y+74.69)*skala);
+			rysuj.lineTo((x+13+wymiar)*skala,(y+71.38)*skala);
+			rysuj.lineTo((x+19.61+wymiar)*skala,(y+45.38)*skala);
+			rysuj.arc((x+25.55+wymiar)*skala,(y+46.29)*skala, 6.01*skala, 4, 4.8, 0);
+			rysuj.lineTo((x+47.26+wymiar)*skala,(y+40.3)*skala);
+			rysuj.arc((x+51.04+wymiar)*skala,(y+40.3)*skala, 3.78*skala, 3, 6.3, 1);
+			rysuj.lineTo((x+59.23+wymiar)*skala,(y+40.3)*skala);
+			rysuj.lineTo((x+59.23+wymiar)*skala,(y+32.46)*skala);
+			rysuj.lineTo((x+7.43+wymiar)*skala,(y+32.46)*skala);
+			rysuj.closePath();
+			rysuj.fillStyle=kolor;
+			rysuj.fill();
+			rysuj.moveTo((x+7.43+wymiar)*skala,(y+38)*skala);
+			rysuj.lineTo((x+59.23+wymiar)*skala,(y+38)*skala);
+			rysuj.moveTo((x+7.43+wymiar)*skala,(y+62.47)*skala);
+			rysuj.lineTo((x+12.17+wymiar)*skala,(y+62.47)*skala);
+			rysuj.lineTo((x+12.17+wymiar)*skala,(y+71.38)*skala);
+			for (i=0; i<=5; i++) {
+				rysuj.moveTo((x+9.87+wymiar+(i*10*0.8))*skala*typ,(y+32.48)*skala);
+				rysuj.lineTo((x+9.87+wymiar+(i*10*0.8))*skala*typ,(y+35.96)*skala);
+				for(j=1;j<=10;j++){
+					if(i<5){
+						rysuj.moveTo((x+9.87+wymiar+(i*10*0.8)+(j*0.8))*skala*typ,(y+32.48)*skala);
+						if (j % 5 == 0 && j % 10 != 0) {
+							rysuj.lineTo((x+9.87+wymiar+(i*10*0.8)+(j*0.8))*skala*typ,(y+35.96)*skala);
+						} else {
+							rysuj.lineTo((x+9.87+wymiar+(i*10*0.8)+(j*0.8))*skala*typ,(y+34.21)*skala);
+						}
+
+					}
+				}
+			}
+
+
+			rysuj.strokeStyle="black"
+			rysuj.lineWidth=0.5;
+			rysuj.stroke();
+
+			rysuj.font = "normal 30px Arial";
+			rysuj.fillText(wymiar,40, 350);
+		}
+
+		window.onload = function(){
+			var canvas = document.getElementById("suwmiarka_uniw");
+			var rysuj = canvas.getContext("2d");
+			prowadnica(rysuj,10,4,"silver",4,1);
+			suwak(rysuj,10,4,"silver",4,1,los);
+
+		};
+
+	</script>
+
+</head>
+
+
+<body>
+
+
+	<div  id = "container">
+
+		<div id="logo">
+		 <h1> SUWMIARKA </h1>
+		</div>
+
+		<div id="suwmiarka">
+			<canvas id="suwmiarka_uniw" width="1500" height="600" style="border:1px solid black;">
+			</canvas>
+		</div>
+
+		<div id="kontrola">
+		 <h3> Podaj prawidłowy wynik </h3>
+		</div>
+	</div>
+
+</body>
+
+
+
+
 </html>
